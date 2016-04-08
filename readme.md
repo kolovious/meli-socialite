@@ -3,7 +3,7 @@
 
 ## License
 
-Laravel Socialite is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Mercadolibre Laravel Socialite is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 ## Installation
 
@@ -54,7 +54,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Obtain the user information from GitHub.
+     * Obtain the user information from Meli.
      *
      * @return Response
      */
