@@ -55,9 +55,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()->get(self::$API_ROOT_URL.'/users/me?'.http_build_query(['access_token'=>$token]));
-        // We need to make a hook to put the refresh_token in the user model.
         $output = json_decode($response->getBody(), true);
-        dd($output);
         return $output;
     }
 

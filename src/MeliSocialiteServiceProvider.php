@@ -4,7 +4,7 @@ namespace Kolovious\MeliSocialite;
 
 use Illuminate\Support\ServiceProvider;
 
-class ExtensionServiceProvider extends ServiceProvider
+class MeliSocialiteServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
