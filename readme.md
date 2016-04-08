@@ -21,6 +21,16 @@ After installing the Socialite library, register the `Kolovious\MeliSocialiteSer
     
 ],
 ```
+Also the Meli Facade is available for actions with the API
+
+```php
+'alias' => [
+    // Other alias...
+    
+    'Meli' => Kolovious\MeliSocialite\Facade\Meli::class,
+    
+],
+```
 
 You will also need to add credentials for the OAuth services your application utilizes. These credentials should be placed in your `config/services.php` configuration file:
 ```php
@@ -88,7 +98,7 @@ $user = Socialite::driver('meli')->user();
 // Access Token
 $token = $user->token;
 
-// All Providers
+// Methods from Socialite User 
 $user->getId();
 $user->getNickname();
 $user->getName();

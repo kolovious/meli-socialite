@@ -22,6 +22,17 @@ class MeliManager
     public static $AUTH_URL     = "http://auth.mercadolibre.com/authorization";
     public static $OAUTH_URL    = "/oauth/token";
 
+    /**
+     * Configuration for CURL
+     */
+    public static $CURL_OPTS = array(
+        CURLOPT_USERAGENT => "MELI-PHP-SDK-1.0.0",
+        CURLOPT_SSL_VERIFYPEER => true,
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_TIMEOUT => 60
+    );
+
     protected $client_id;
     protected $client_secret;
     protected $access_token;
@@ -30,7 +41,7 @@ class MeliManager
     /**
      * @var Auth User
      */
-    protected $user; 
+    protected $user;
 
     /**
      * Constructor method.
