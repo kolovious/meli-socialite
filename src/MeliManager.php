@@ -39,11 +39,6 @@ class MeliManager
     protected $refresh_token;
 
     /**
-     * @var Auth User
-     */
-    protected $user;
-
-    /**
      * Constructor method.
      *
      * @param string $client_id
