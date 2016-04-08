@@ -8,10 +8,6 @@ use Laravel\Socialite\Two\User;
 
 class MeliSocialite extends AbstractProvider implements ProviderInterface
 {
-    protected static $API_ROOT_URL = "https://api.mercadolibre.com";
-    protected static $AUTH_URL     = "http://auth.mercadolibre.com/authorization";
-    protected static $OAUTH_URL    = "/oauth/token";
-
     /**
      * Get the authentication URL for the provider.
      *
@@ -20,7 +16,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase(self::$AUTH_URL, $state);
+        return $this->buildAuthUrlFromBase(Meli::$AUTH_URL, $state);
     }
 
     /**
@@ -31,7 +27,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
     protected function getTokenUrl()
     {
 
-        $token_url = self::$API_ROOT_URL.self::$OAUTH_URL;
+        $token_url = Meli::$API_ROOT_URL.Meli::$OAUTH_URL;
 
         return $token_url;
     }
@@ -54,7 +50,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get(self::$API_ROOT_URL.'/users/me?'.http_build_query(['access_token'=>$token]));
+        $response = $this->getHttpClient()->get(Meli::$API_ROOT_URL.'/users/me?'.http_build_query(['access_token'=>$token]));
         $output = json_decode($response->getBody(), true);
         return $output;
     }

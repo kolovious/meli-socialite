@@ -30,6 +30,12 @@ class MeliSocialiteServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Here we will be registering the facade, but not now yet.
+        $this->app->bind('Kolovious\MeliSocialite\MeliManager',function() {
+            return new MeliManager(
+                            $this->app['config']['services.meli.client_id'],
+                            $this->app['config']['services.meli.client_secret']
+                        );
+        });
     }
 }
