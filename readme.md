@@ -44,7 +44,7 @@ use Socialite;
 class AuthController extends Controller
 {
     /**
-     * Redirect the user to the GitHub authentication page.
+     * Redirect the user to the Meli authentication page.
      *
      * @return Response
      */
