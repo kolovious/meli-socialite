@@ -14,8 +14,10 @@ use Laravel\Socialite\Two\User;
 class MeliUser extends User
 {
     public $refresh_token;
-    
-    public $expires_in;
+
+    protected $expired_in;
+
+    public $expires_at;
 
     /**
      * Set the token on the user.
@@ -38,7 +40,8 @@ class MeliUser extends User
      */
     public function setExpiresIn($expires_in)
     {
-        $this->expires_in = $expires_in;
+        $this->expired_in = $expires_in;
+        $this->expires_at = time()+$expires_in;
 
         return $this;
     }

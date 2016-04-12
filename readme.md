@@ -95,8 +95,10 @@ Once you have a user instance, you can grab a few more details about the user:
 ```php
 $user = Socialite::driver('meli')->user();
 
-// Access Token
-$token = $user->token;
+// Tokens & Expire time
+$token         = $user->token;
+$refresh_token = $user->refresh_token;
+$expires_at    = $user->expires_at; // UNIX TIMESTAMP
 
 // Methods from Socialite User 
 $user->getId();
