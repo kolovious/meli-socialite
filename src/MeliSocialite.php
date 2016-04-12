@@ -5,6 +5,7 @@ namespace Kolovious\MeliSocialite;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
 use Laravel\Socialite\Two\User;
+use GuzzleHttp\ClientInterface;
 
 class MeliSocialite extends AbstractProvider implements ProviderInterface
 {
