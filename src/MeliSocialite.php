@@ -94,15 +94,13 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
             $postKey => $this->getTokenFields($code),
         ]);
 
-        $this->parseResponse($response->getBody());
-
-        return $this->parsedAccessToken();
+        return $this->parseResponse($response->getBody())->parsedAccessToken();
     }
 
     protected function parseResponse($body)
     {
         $this->parsed_response = json_decode($body, true);
-        dd($this->parsed_response);
+        return $this;
     }
 
     protected function parsedAccessToken()
