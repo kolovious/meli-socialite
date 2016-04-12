@@ -9,6 +9,19 @@ use Laravel\Socialite\Two\User;
 class MeliSocialite extends AbstractProvider implements ProviderInterface
 {
     /**
+     * @var Refresh Token
+     */
+    protected $refresh_token;
+    /**
+     * @var Access Token Expires in
+     */
+    protected $expires_in;
+    /**
+     * @var With Access Token, Refresh Token and Expires In.
+     */
+    protected $parsed_response;
+
+    /**
      * Get the authentication URL for the provider.
      *
      * @param  string $state
@@ -63,11 +76,59 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function mapUserToObject(array $user)
     {
-        return (new User)->setRaw($user)->map([
+        return (new MeliUser)->setRaw($user)->map([
             'id'                => $user['id'],
             'nickname'          => $user['nickname'],
             'name'              => trim($user['first_name'].' '.$user['last_name']),
             'email'             => $user['email'],
         ]);
+    }
+
+    public function getAccessToken($code)
+    {
+        $postKey = (version_compare(ClientInterface::VERSION, '6') === 1) ? 'form_params' : 'body';
+
+        $response = $this->getHttpClient()->post($this->getTokenUrl(), [
+            'headers' => ['Accept' => 'application/json'],
+            $postKey => $this->getTokenFields($code),
+        ]);
+
+        $this->parseResponse($response->getBody());
+
+        return $this->parsedAccessToken();
+    }
+
+    protected function parseResponse($body)
+    {
+        $this->parsed_response = json_decode($body, true);
+        dd($this->parsed_response);
+    }
+
+    protected function parsedAccessToken()
+    {
+        return $this->parsed_response['access_token'];
+    }
+
+    protected function getRefreshToken()
+    {
+        return $this->parsed_response['refresh_token'];
+    }
+
+    protected function getExpiresIn()
+    {
+        return $this->parsed_response['expires_in'];
+    }
+    
+    public function user()
+    {
+        if ($this->hasInvalidState()) {
+            throw new InvalidStateException;
+        }
+
+        $user = $this->mapUserToObject($this->getUserByToken(
+            $token = $this->getAccessToken($this->getCode())
+        ));
+
+        return $user->setToken($token)->setRefreshToken($this->getRefreshToken())->setExpiresIn($this->getExpiresIn());;
     }
 }
