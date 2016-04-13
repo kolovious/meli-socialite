@@ -53,6 +53,48 @@ class MeliManager
         $this->refresh_token = $refresh_token;
     }
 
+    /**
+     * Execute a POST Request to create a new AccessToken from a existent refresh_token
+     *
+     * @return string|mixed
+     */
+    public function refreshAccessToken() {
+
+        if($this->refresh_token) {
+            $body = array(
+                "grant_type" => "refresh_token",
+                "client_id" => $this->client_id,
+                "client_secret" => $this->client_secret,
+                "refresh_token" => $this->refresh_token
+            );
+
+            $opts = array(
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $body
+            );
+
+            $request = $this->execute(self::$OAUTH_URL, $opts);
+
+            if($request["httpCode"] == 200) {
+                $this->access_token = $request["body"]->access_token;
+
+                if($request["body"]->refresh_token)
+                    $this->refresh_token = $request["body"]->refresh_token;
+
+                return $request;
+
+            } else {
+                return $request;
+            }
+        } else {
+            $result = array(
+                'error' => 'Offline-Access is not allowed.',
+                'httpCode'  => null
+            );
+            return $result;
+        }
+    }
+
 
     /**
      * Execute a GET Request
