@@ -7,6 +7,7 @@
  */
 
 namespace Kolovious\MeliSocialite;
+use Illuminate\Support\Facades\Auth;
 
 
 /**
@@ -39,6 +40,11 @@ class MeliManager
     protected $refresh_token;
 
     /**
+     * @var boolean Next is with token?
+     */
+    protected $call_with_token;
+
+    /**
      * Constructor method.
      *
      * @param string $client_id
@@ -51,6 +57,7 @@ class MeliManager
         $this->client_secret = $client_secret;
         $this->access_token = $access_token;
         $this->refresh_token = $refresh_token;
+        $this->call_with_token=false;
     }
 
     /**
@@ -195,6 +202,15 @@ class MeliManager
 
         return $return;
     }
+
+
+    public function withToken()
+    {
+        $this->access_token = Auth::user()->access_token;
+        $this->call_with_token=true;
+        return $this;
+    }
+
     /**
      * Check and construct an real URL to make request
      *
@@ -211,6 +227,12 @@ class MeliManager
         } else {
             $uri = $path;
         }
+        // FIX: If access_token is set, and we have the flag to call withToken, first, we send as a param the access_token, then we set the flag to 0
+        if($this->access_token && $this->call_with_token) {
+            $params['access_token'] = $this->access_token;
+            $this->call_with_token = false;
+        }
+
         if(!empty($params)) {
             $paramsJoined = array();
             foreach($params as $param => $value) {
