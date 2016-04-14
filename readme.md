@@ -111,7 +111,7 @@ $user->user // Provided by Meli
 
 ```
 
-### Using the Facade to make calls to the API.
+### Using the Facade to make API calls.
 
 ```php
 
