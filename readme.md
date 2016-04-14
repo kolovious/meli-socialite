@@ -110,3 +110,29 @@ $user->getEmail();
 $user->user // Provided by Meli
 
 ```
+
+### Using the Facade to make calls to the API.
+
+```php
+
+// Items from User ( ALL ) 
+$offset = 0;
+$call= "/users/".$user_id."/items/search";
+$result = Meli::get($call, ["offset"=>$offset, 'access_token'=>$access_token]);
+
+// Update Item Description
+// Will use the saved access_token in the MeliManager object.
+$result = Meli::withToken()->put('/items/'.$item_id.'/description', [ 'text' => $this->description ]); 
+
+or
+
+// Will save this token for future uses. Same as above.
+$result = Meli::withToken($token)->put('/items/'.$item_id.'/description', [ 'text' => $this->description ]);
+
+or
+
+// Will use the Access Token in the Auth user, and save it for future uses. You can call withToken() the next time and it will work as espected
+$result = Meli::withAuthToken()->put('/items/'.$item_id.'/description', [ 'text' => $this->description ]);
+
+```
+

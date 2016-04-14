@@ -204,11 +204,28 @@ class MeliManager
     }
 
 
-    public function withToken()
+    /**
+     * Next call to the API will be sent with access_token as parameter.
+     * @param string|null $token We can sent the token to set it up in the object for future calls.
+     * @return $this MeliManager
+     */
+    public function withToken($token=null)
     {
-        $this->access_token = Auth::user()->access_token;
+        if($token) {
+            $this->access_token = $token;
+        }
+
         $this->call_with_token=true;
         return $this;
+    }
+
+    /**
+     * Wrapper for using the Actual user
+     * @return MeliManager
+     */
+    public function withAuthToken()
+    {
+        return $this->withToken(Auth::user()->access_token);
     }
 
     /**
