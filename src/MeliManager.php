@@ -194,8 +194,11 @@ class MeliManager
         $uri = $this->make_path($path, $params);
         $ch = curl_init($uri);
         curl_setopt_array($ch, self::$CURL_OPTS);
-        if(!empty($opts))
+
+        if(!empty($opts)) {
             curl_setopt_array($ch, $opts);
+        }
+
         $return["body"] = json_decode(curl_exec($ch));
         $return["httpCode"] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
