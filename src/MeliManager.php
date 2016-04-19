@@ -69,8 +69,8 @@ class MeliManager
 
         if($this->refresh_token) {
             $body = array(
-                "grant_type" => "refresh_token",
-                "client_id" => $this->client_id,
+                "grant_type"    => "refresh_token",
+                "client_id"     => $this->client_id,
                 "client_secret" => $this->client_secret,
                 "refresh_token" => $this->refresh_token
             );

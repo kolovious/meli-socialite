@@ -284,16 +284,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
+                "reference": "31382fef2889136415751badebbd1cb022a4ed72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
-                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/31382fef2889136415751badebbd1cb022a4ed72",
+                "reference": "31382fef2889136415751badebbd1cb022a4ed72",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-02-18 21:54:00"
+            "time": "2016-04-13 19:56:01"
         },
         {
             "name": "illuminate/contracts",
@@ -388,12 +388,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "882f9f1d4a60f4a49aacb3b7685dda67e6290745"
+                "reference": "a929322d70cf4f8a552534ae1bd796c4213c3ed9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/882f9f1d4a60f4a49aacb3b7685dda67e6290745",
-                "reference": "882f9f1d4a60f4a49aacb3b7685dda67e6290745",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/a929322d70cf4f8a552534ae1bd796c4213c3ed9",
+                "reference": "a929322d70cf4f8a552534ae1bd796c4213c3ed9",
                 "shasum": ""
             },
             "require": {
@@ -426,7 +426,7 @@
             ],
             "description": "The Illuminate Http package.",
             "homepage": "http://laravel.com",
-            "time": "2016-04-06 14:10:49"
+            "time": "2016-04-15 21:36:19"
         },
         {
             "name": "illuminate/session",
@@ -484,12 +484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "53fc76cb54fad7615232f27c4ee819d3b3fa4390"
+                "reference": "450863d0f0ac2a74ae8490b36d2e8ea31958b1a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/53fc76cb54fad7615232f27c4ee819d3b3fa4390",
-                "reference": "53fc76cb54fad7615232f27c4ee819d3b3fa4390",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/450863d0f0ac2a74ae8490b36d2e8ea31958b1a3",
+                "reference": "450863d0f0ac2a74ae8490b36d2e8ea31958b1a3",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2016-04-06 14:10:49"
+            "time": "2016-04-16 12:26:26"
         },
         {
             "name": "laravel/socialite",
@@ -539,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "c1b8622bbf31b8a155e6874db98b6083ac82ff9a"
+                "reference": "51ba87e1d16184f54a4cf2d813a57afa98ee2beb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/c1b8622bbf31b8a155e6874db98b6083ac82ff9a",
-                "reference": "c1b8622bbf31b8a155e6874db98b6083ac82ff9a",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/51ba87e1d16184f54a4cf2d813a57afa98ee2beb",
+                "reference": "51ba87e1d16184f54a4cf2d813a57afa98ee2beb",
                 "shasum": ""
             },
             "require": {
@@ -585,7 +585,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2016-03-28 01:58:37"
+            "time": "2016-04-13 01:51:48"
         },
         {
             "name": "league/oauth1-client",
@@ -1066,12 +1066,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "804b5f0a9fda136f24b56e2615b1520342626d28"
+                "reference": "7f662675772a7dfa0f423779744ef48a003e6f91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/804b5f0a9fda136f24b56e2615b1520342626d28",
-                "reference": "804b5f0a9fda136f24b56e2615b1520342626d28",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/7f662675772a7dfa0f423779744ef48a003e6f91",
+                "reference": "7f662675772a7dfa0f423779744ef48a003e6f91",
                 "shasum": ""
             },
             "require": {
@@ -1140,7 +1140,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-07 15:36:32"
+            "time": "2016-04-11 08:32:34"
         },
         {
             "name": "symfony/polyfill-mbstring",
