@@ -11,13 +11,13 @@ Mercadolibre Laravel Socialite is open-sourced software licensed under the [MIT 
 
 ### Configuration
 
-After installing the Socialite library, register the `Kolovious\MeliSocialiteServiceProvider` in your `config/app.php` configuration file:
+After installing the Socialite library, register the `Kolovious\MeliSocialite\MeliSocialiteServiceProvider` in your `config/app.php` configuration file:
 
 ```php
 'providers' => [
     // Other service providers...
     
-    Kolovious\MeliSocialiteServiceProvider::class,
+    Kolovious\MeliSocialite\MeliSocialiteServiceProvider::class,
     
 ],
 ```
