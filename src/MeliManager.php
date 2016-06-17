@@ -223,12 +223,24 @@ class MeliManager
     }
 
     /**
+     * Save refresh token for refreshToken Call
+     * @param string|null $refresh_token to be saved
+     * @return $this MeliManager
+     */
+    public function withRefreshToken($token)
+    {
+        $this->refresh_token = $token;
+        return $this;
+    }
+
+    /**
      * Wrapper for using the Actual user
      * @return MeliManager
      */
     public function withAuthToken()
     {
-        return $this->withToken(Auth::user()->access_token);
+        $user = Auth::user();
+        return $this->withToken($user->access_token)->withRefreshToken($user->refresh_token);
     }
 
     /**
