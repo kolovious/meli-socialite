@@ -80,6 +80,9 @@ class MeliManager
                 CURLOPT_POSTFIELDS => $body
             );
 
+            // Cancel if the access_token is set, the call for refresh with it
+            // FIXED BY: Matias Azar - matiazar@gmail.com
+            $this->call_with_token = false;
             $request = $this->execute(self::$OAUTH_URL, $opts);
 
             if($request["httpCode"] == 200) {
