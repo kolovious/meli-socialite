@@ -81,7 +81,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
             'id'                => $user['id'],
             'nickname'          => $user['nickname'],
             'name'              => trim($user['first_name'].' '.$user['last_name']),
-            'email'             => $user['email'],
+            'email'             => (isset($user['email']))? $user['email'] : \Auth::user()->email,
         ]);
     }
 
@@ -117,7 +117,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
     {
         return $this->parsed_response['expires_in'];
     }
-    
+
     public function user()
     {
         if ($this->hasInvalidState()) {
