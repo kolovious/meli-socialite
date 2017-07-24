@@ -10,9 +10,8 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-      
-        "laravel/socialite": "^2.0",
+    "require": {      
+        "laravel/socialite": "3.*",
         "illuminate/support": "5.*"
     },
     "autoload" : {
