@@ -27,7 +27,7 @@ class MeliManager
      * Configuration for CURL
      */
     public static $CURL_OPTS = array(
-        CURLOPT_USERAGENT => "MELI-PHP-SDK-1.0.0",
+        CURLOPT_USERAGENT => "MELI-PHP-SDK-2.0.0",
         CURLOPT_SSL_VERIFYPEER => true,
         CURLOPT_CONNECTTIMEOUT => 10,
         CURLOPT_RETURNTRANSFER => 1,

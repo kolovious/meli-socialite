@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Leonardo
- * Date: 12/04/2016
- * Time: 11:03 AM
- */
-
 namespace Kolovious\MeliSocialite;
-
 
 use Laravel\Socialite\Two\User;
 
