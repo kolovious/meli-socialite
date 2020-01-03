@@ -7,7 +7,7 @@ Mercadolibre Laravel Socialite is open-sourced software licensed under the [MIT 
 
 ## Installation
 
-    composer require kolovious/melisocialite
+    composer require kolovious/meli-socialite
 
 ### Configuration
 
