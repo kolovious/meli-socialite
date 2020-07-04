@@ -31,7 +31,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase(MeliManager::$AUTH_URL, $state);
+        return $this->buildAuthUrlFromBase(MeliManager::$AUTH_URL['MLB'] . '/authorization', $state);
     }
 
     /**
@@ -41,10 +41,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-
-        $token_url = MeliManager::$API_ROOT_URL.MeliManager::$OAUTH_URL;
-
-        return $token_url;
+        return MeliManager::getApiUrl(MeliManager::getOAuthUrl());
     }
 
 
@@ -65,7 +62,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get(MeliManager::$API_ROOT_URL.'/users/me?'.http_build_query(['access_token'=>$token]));
+        $response = $this->getHttpClient()->get(MeliManager::getApiUrl().'/users/me?'.http_build_query(['access_token'=>$token]));
         $output = json_decode($response->getBody(), true);
         return $output;
     }
