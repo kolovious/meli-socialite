@@ -40,6 +40,7 @@ You will also need to add credentials for the OAuth services your application ut
     'client_id' => 'your-meli-app-id',
     'client_secret' => 'your-meli-secret-code',
     'redirect' => 'http://your-callback-url',
+    'country' => 'setting-meli-country'
 ],
 ```
 ### Basic Usage
