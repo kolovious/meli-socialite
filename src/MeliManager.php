@@ -7,7 +7,6 @@
  */
 
 namespace Kolovious\MeliSocialite;
-
 use Illuminate\Support\Facades\Auth;
 
 
@@ -17,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
  * This class is cut off of Meli Official SDK, we removed all the auth part, because we only need the API interaction here.
  * When the Meli Official SDK were available via Composer, we will change this
  */
+
 class MeliManager extends \Meli
 {
 
@@ -30,28 +30,22 @@ class MeliManager extends \Meli
      */
     protected $call_with_token;
 
-    public static $COUNTRY;
-
     /**
      * Constructor method.
      *
      * @param string $client_id
      * @param string $client_secret
-     * @param string $country
      * @param string $access_token
      * @param string $refresh_token
      */
-    public function __construct($client_id, $client_secret, $country, $access_token = null, $refresh_token = null)
+    public function __construct($client_id, $client_secret, $access_token = null, $refresh_token = null)
     {
         parent::__construct($client_id, $client_secret, $access_token, $refresh_token);
         $this->client_id = $client_id;
         $this->client_secret = $client_secret;
         $this->access_token = $access_token;
         $this->refresh_token = $refresh_token;
-
         $this->call_with_token = false;
-
-        self::$COUNTRY = $country;
     }
 
     public static function getOAuthUrl()
@@ -61,15 +55,10 @@ class MeliManager extends \Meli
 
     public static function getApiUrl($path = null)
     {
-        if (!is_null($path)) {
+        if(!is_null($path)){
             return self::$API_ROOT_URL . $path;
         }
         return self::$API_ROOT_URL;
-    }
-
-    public static function getAuthUrlWithCountry()
-    {
-        return self::$AUTH_URL[self::$COUNTRY];
     }
 
     /**
@@ -116,7 +105,7 @@ class MeliManager extends \Meli
      */
     public function make_path($path, $params = array())
     {
-        if ($this->access_token && $this->call_with_token) {
+        if($this->access_token && $this->call_with_token) {
             $params['access_token'] = $this->access_token;
             $this->call_with_token = false;
         }

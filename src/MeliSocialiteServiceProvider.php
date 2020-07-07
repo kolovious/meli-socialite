@@ -35,8 +35,7 @@ class MeliSocialiteServiceProvider extends ServiceProvider
         $this->app->bind('Kolovious\MeliSocialite\MeliManager',function() {
             return new MeliManager(
                             $this->app['config']['services.meli.client_id'],
-                            $this->app['config']['services.meli.client_secret'],
-                            $this->app['config']['services.meli.country']
+                            $this->app['config']['services.meli.client_secret']
                         );
         });
     }

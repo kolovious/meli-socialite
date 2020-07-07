@@ -31,7 +31,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase(MeliManager::getAuthUrlWithCountry() . '/authorization', $state);
+        return $this->buildAuthUrlFromBase(MeliManager::$AUTH_URL['MLB'] . '/authorization', $state);
     }
 
     /**
