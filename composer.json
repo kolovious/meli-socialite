@@ -1,7 +1,11 @@
 {
     "name": "kolovious/meli-socialite",
     "description": "Mercadolibre Laravel Socialite Integration",
-    "keywords": ["Laravel","Socialite","Mercadolibre"],
+    "keywords": [
+        "Laravel",
+        "Socialite",
+        "Mercadolibre"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -12,14 +16,14 @@
     "minimum-stability": "dev",
     "repositories": [
         {
-            "type":"package",
+            "type": "package",
             "package": {
                 "name": "mercadolibre/php-sdk",
-                "version":"master",
+                "version": "master",
                 "source": {
                     "url": "https://github.com/mercadolibre/php-sdk.git",
                     "type": "git",
-                    "reference":"master"
+                    "reference": "master"
                 }
             }
         }
@@ -27,9 +31,9 @@
     "require": {
         "laravel/socialite": "4.*",
         "illuminate/support": "7.*",
-        "mercadolibre/php-sdk" : "master"
+        "mercadolibre/php-sdk": "master"
     },
-    "autoload" : {
+    "autoload": {
         "psr-4": {
             "Kolovious\\MeliSocialite\\": "src/"
         },

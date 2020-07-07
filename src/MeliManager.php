@@ -7,7 +7,9 @@
  */
 
 namespace Kolovious\MeliSocialite;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 
 /**
@@ -16,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
  * This class is cut off of Meli Official SDK, we removed all the auth part, because we only need the API interaction here.
  * When the Meli Official SDK were available via Composer, we will change this
  */
-
 class MeliManager extends \Meli
 {
 
@@ -55,10 +56,37 @@ class MeliManager extends \Meli
 
     public static function getApiUrl($path = null)
     {
-        if(!is_null($path)){
+        if (!is_null($path)) {
             return self::$API_ROOT_URL . $path;
         }
         return self::$API_ROOT_URL;
+    }
+
+    public static function getAuthUrlWithCountry()
+    {
+        $country = Config::get('services.meli.country') ?? 'CBT';
+        return self::$AUTH_URL[$country];
+    }
+
+    /**
+     * Wrapper for using the Actual user
+     * @return MeliManager
+     */
+    public function withAuthToken()
+    {
+        $user = Auth::user();
+        return $this->withToken($user->access_token)->withRefreshToken($user->refresh_token);
+    }
+
+    /**
+     * Save refresh token for refreshToken Call
+     * @param string|null $refresh_token to be saved
+     * @return $this MeliManager
+     */
+    public function withRefreshToken($token)
+    {
+        $this->refresh_token = $token;
+        return $this;
     }
 
     /**
@@ -77,27 +105,6 @@ class MeliManager extends \Meli
     }
 
     /**
-     * Save refresh token for refreshToken Call
-     * @param string|null $refresh_token to be saved
-     * @return $this MeliManager
-     */
-    public function withRefreshToken($token)
-    {
-        $this->refresh_token = $token;
-        return $this;
-    }
-
-    /**
-     * Wrapper for using the Actual user
-     * @return MeliManager
-     */
-    public function withAuthToken()
-    {
-        $user = Auth::user();
-        return $this->withToken($user->access_token)->withRefreshToken($user->refresh_token);
-    }
-
-    /**
      * Check that the access token has been defined and construct an real URL to make request
      * @param string $path
      * @param array $params
@@ -105,7 +112,7 @@ class MeliManager extends \Meli
      */
     public function make_path($path, $params = array())
     {
-        if($this->access_token && $this->call_with_token) {
+        if ($this->access_token && $this->call_with_token) {
             $params['access_token'] = $this->access_token;
             $this->call_with_token = false;
         }
