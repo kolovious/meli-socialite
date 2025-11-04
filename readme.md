@@ -1,5 +1,8 @@
 # Mercadolibre Laravel Socialite Provider
 
+Laravel Socialite provider for Mercadolibre OAuth authentication.
+
+**Supports Laravel 9.x, 10.x, 11.x, and 12.x**
 
 ## License
 
@@ -10,6 +13,12 @@ Mercadolibre Laravel Socialite is open-sourced software licensed under the [MIT 
     composer require kolovious/meli-socialite
 
 ### Configuration
+
+**Laravel 11.x & 12.x (Auto-Discovery)**
+
+For Laravel 11 and 12, the service provider and facade are automatically discovered. You can skip the manual registration steps below.
+
+**Laravel 9.x & 10.x (Manual Registration)**
 
 After installing the Socialite library, register the `Kolovious\MeliSocialite\MeliSocialiteServiceProvider` in your `config/app.php` configuration file after the Socialite Service Provider:
 
