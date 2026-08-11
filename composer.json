@@ -13,7 +13,8 @@
             "email": "cololeo@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "repositories": [
         {
             "type": "package",
@@ -29,10 +30,10 @@
         }
     ],
     "require": {
-        "php": "^8.1|^8.2|^8.3",
+        "php": "^8.2",
         "laravel/socialite": "^5.0",
         "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
-        "mercadolibre/php-sdk": "master"
+        "mercadolibre/php-sdk": "master@dev"
     },
     "autoload": {
         "psr-4": {

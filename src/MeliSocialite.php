@@ -2,7 +2,6 @@
 
 namespace Kolovious\MeliSocialite;
 
-use GuzzleHttp\ClientInterface;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\InvalidStateException;
 use Laravel\Socialite\Two\ProviderInterface;
@@ -32,7 +31,7 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
             $token = $this->getAccessToken($this->getCode())
         ));
 
-        return $user->setToken($token)->setRefreshToken($this->getRefreshToken())->setExpiresIn($this->getExpiresIn());;
+        return $user->setToken($token)->setRefreshToken($this->getRefreshToken())->setExpiresIn($this->getExpiresIn());
     }
 
     /**
@@ -66,11 +65,9 @@ class MeliSocialite extends AbstractProvider implements ProviderInterface
 
     public function getAccessToken($code)
     {
-        $postKey = (version_compare(ClientInterface::VERSION, '6') === 1) ? 'form_params' : 'body';
-
         $response = $this->getHttpClient()->post($this->getTokenUrl(), [
             'headers' => ['Accept' => 'application/json'],
-            $postKey => $this->getTokenFields($code),
+            'form_params' => $this->getTokenFields($code),
         ]);
 
         return $this->parseResponse($response->getBody())->parsedAccessToken();
