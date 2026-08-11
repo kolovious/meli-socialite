@@ -10,7 +10,7 @@ Mercadolibre Laravel Socialite is open-sourced software licensed under the [MIT 
 
 ## Installation
 
-    composer require kolovious/melisocialite
+    composer require kolovious/meli-socialite
 
 ### Configuration
 
@@ -146,4 +146,3 @@ or
 $result = Meli::withAuthToken()->put('/items/'.$item_id.'/description', [ 'text' => $this->description ]);
 
 ```
-
